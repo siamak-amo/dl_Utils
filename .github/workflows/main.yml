@@ -1,0 +1,16 @@
+name: Telegram Channel Archiver
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # Runs every 15 minutes
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Telegram Archiver
+        uses: ProAlit/aio-downloader@main
+        with:
+          task: 'telegram'
+          channels: '["projectXtls"]'  # Replace with your channel
